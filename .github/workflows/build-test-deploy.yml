@@ -1,6 +1,10 @@
 name: build-test-deploy
-on: push
-
+on:
+    push:
+        branches:
+            - main
+        paths:
+            - 'hello_world.txt'
 jobs:
     build:
         runs-on: ubuntu-latest
