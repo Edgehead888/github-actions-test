@@ -30,3 +30,43 @@ jobs:
               run: npm install
             - name: npm run
               run: npm test
+
+    deploy:
+        needs: test
+
+        permissions:
+            contents: write
+            pages: write
+            id-token: write
+
+        environment:
+            name: production
+            url: ${{ steps.deployment.outputs.page_url }}
+        
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: check out repository code
+              uses: actions/checkout@v4
+              with:
+                token: ${{ secrets.GITHUB_TOKEN }}
+            - name: use node.js 20.x
+              uses: actions/setup-node@v1
+              with:
+                node-version: '20.x'
+            - name: config github pages
+              uses: actions/configure-pages@v4
+              with:
+                static_site_generator: next
+            - name: npm install
+              run: npm install
+            - name: npm build
+              run: npm build
+            - name: upload artifacts
+              uses: actions/upload-pages-artifact@v3
+              with:
+                path: './out'
+            - name: deploy
+              id: deployment
+              uses: actions/deploy-pages@v4
+                    
