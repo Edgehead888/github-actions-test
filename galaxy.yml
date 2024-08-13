@@ -1,0 +1,29 @@
+namespace: sap
+name: baremetal
+version: 2.7.0
+readme: README.md
+authors:
+- SAP SE
+description: Converged Cloud Baremetal Automation
+license:
+- Apache-2.0
+license_file: 'LICENSE'
+tags:
+  - baremetal
+  - dell
+  - idrac
+  - lenovo
+  - imm
+  - xcc
+  - openmanage
+dependencies:
+  community.general: '>=6.0.0,<7.0.0'
+  netbox.netbox: '>=3.0.0,<4.0.0'
+  openstack.cloud: '>=1.8,<3'
+  dellemc.openmanage: '>=7.0.0,<8.0.0'
+  hpe.oneview: '>=9.0.0,<9.1.0'
+  ansible.utils: '>=2.0.0,<3.0.0'
+  git+https://github.tools.sap/cia/sap.tools.git: 'v2'
+repository: https://github.wdf.sap.corp/Infrastructure-Automation/sap.baremetal.git
+homepage: https://github.wdf.sap.corp/Infrastructure-Automation/sap.baremetal
+build_ignore: []
